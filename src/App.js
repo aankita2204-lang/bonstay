@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { HashRouter, Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -69,7 +69,7 @@ const Navigation = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Navigation />
         <Routes>
@@ -85,7 +85,7 @@ const App = () => {
           <Route path="/reschedule/:bookingId" element={<AuthRequired><Reschedule /></AuthRequired>} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
