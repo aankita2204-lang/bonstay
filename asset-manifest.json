@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bonstay/static/css/main.cb4eccc6.css",
+    "main.js": "/bonstay/static/js/main.ff182e9c.js",
+    "static/js/453.4c3a044e.chunk.js": "/bonstay/static/js/453.4c3a044e.chunk.js",
+    "index.html": "/bonstay/index.html",
+    "main.cb4eccc6.css.map": "/bonstay/static/css/main.cb4eccc6.css.map",
+    "main.ff182e9c.js.map": "/bonstay/static/js/main.ff182e9c.js.map",
+    "453.4c3a044e.chunk.js.map": "/bonstay/static/js/453.4c3a044e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb4eccc6.css",
+    "static/js/main.ff182e9c.js"
+  ]
+}
