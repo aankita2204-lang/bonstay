@@ -2,7 +2,7 @@
   "name": "bonstay-partialcode",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME",
+  "homepage": "https://aankita2204-lang.github.io/bonstay",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
