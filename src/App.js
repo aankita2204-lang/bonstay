@@ -33,40 +33,63 @@ const Footer = () => {
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     setIsLoggedIn(!!userId);
+    // Close menu when route changes
+    setIsMenuOpen(false);
   }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
     setIsLoggedIn(false);
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav
       data-testid="nav-bar"
-      className="navbar navbar-expand-lg navbar-light bg-custom"
+      className={`navbar navbar-expand-lg navbar-light bg-custom ${isMenuOpen ? 'menu-open' : ''}`}
     >
-      <Link className="nav-link" style={{ fontFamily: "cursive" }} to="/home">
+      <Link className="navbar-brands" to="/home">
         BONSTAY
       </Link>
-      <ul className="navbar-nav">
+
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={toggleMenu}
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <ul className={`navbar-nav ${isMenuOpen ? 'show' : ''}`}>
         <li className="nav-item">
-          <Link className="nav-link" to="/home">
+          <Link className="nav-link" to="/home" onClick={() => setIsMenuOpen(false)}>
             Home
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/hotels">
+          <Link className="nav-link" to="/hotels" onClick={() => setIsMenuOpen(false)}>
             Hotels
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/bookings">
+          <Link className="nav-link" to="/bookings" onClick={() => setIsMenuOpen(false)}>
             Bookings
           </Link>
         </li>
@@ -76,7 +99,7 @@ const Navigation = () => {
               Logout
             </Link>
           ) : (
-            <Link className="nav-link" to="/login">
+            <Link className="nav-link" to="/login" onClick={() => setIsMenuOpen(false)}>
               Login
             </Link>
           )}

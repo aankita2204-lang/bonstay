@@ -18,7 +18,7 @@ const Contact = () => {
         <div style={{
             minHeight: '100vh',
             background: 'linear-gradient(135deg, #222 0%, #764ba2 100%)',
-            padding: '80px 20px',
+            padding: '40px 15px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -28,7 +28,7 @@ const Contact = () => {
                 maxWidth: '1000px',
                 width: '100%',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 gap: '40px',
                 background: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(20px)',
