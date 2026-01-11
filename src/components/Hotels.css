@@ -238,19 +238,33 @@
 /* Responsive */
 @media (max-width: 768px) {
     .hotels-header {
-        padding: 40px 20px;
+        padding: 30px 15px;
     }
 
     .hotels-header h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .hotels-grid {
-        padding: 20px;
+        padding: 15px;
         gap: 16px;
+        grid-template-columns: 1fr;
     }
 
     .hotel-image {
         height: 180px;
+    }
+
+    .hotel-content {
+        padding: 15px;
+    }
+
+    .hotel-actions {
+        flex-direction: column;
+    }
+
+    .btn-book {
+        width: 100%;
+        padding: 14px;
     }
 }
