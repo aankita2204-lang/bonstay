@@ -57,6 +57,7 @@ const Navigation = () => {
   return (
     <nav
       data-testid="nav-bar"
+      data-nav-version="1.1"
       className={`navbar navbar-expand-lg navbar-light bg-custom ${isMenuOpen ? 'menu-open' : ''}`}
     >
       <Link className="navbar-brands" to="/home">

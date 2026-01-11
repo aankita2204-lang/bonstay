@@ -95,12 +95,17 @@ nav a.nav-link[href="/home"]:first-of-type {
 /* Hamburger Menu Toggle */
 .navbar-toggler {
   display: none;
-  background: none;
+  background: none !important;
+  background-image: none !important;
   border: none !important;
   padding: 8px;
   cursor: pointer;
   outline: none !important;
   box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+  display: none !important;
 }
 
 .hamburger {
