@@ -17,7 +17,7 @@ const Contact = () => {
     return (
         <div style={{
             minHeight: '100vh',
-            background: 'linear-gradient(135deg, #FF385C 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #222 0%, #764ba2 100%)',
             padding: '80px 20px',
             display: 'flex',
             alignItems: 'center',
@@ -86,7 +86,7 @@ const Contact = () => {
                                     borderRadius: '10px',
                                     border: 'none',
                                     background: 'white',
-                                    color: '#FF385C',
+                                    color: '#222',
                                     fontWeight: '700',
                                     cursor: 'pointer'
                                 }}
@@ -164,7 +164,7 @@ const Contact = () => {
                                     borderRadius: '12px',
                                     border: 'none',
                                     background: 'white',
-                                    color: '#FF385C',
+                                    color: '#222',
                                     fontSize: '17px',
                                     fontWeight: '800',
                                     cursor: 'pointer',

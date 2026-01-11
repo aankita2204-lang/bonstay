@@ -1,9 +1,9 @@
 /* ===== Airbnb-Inspired BonStay Theme ===== */
 
 :root {
-  --airbnb-red: #FF385C;
-  --airbnb-red-dark: #E31C5F;
-  --airbnb-red-light: #FF5A5F;
+  --airbnb-red: #333333;
+  --airbnb-red-dark: #222222;
+  --airbnb-red-light: #555555;
   --airbnb-dark: #222222;
   --airbnb-gray: #717171;
   --airbnb-light-gray: #DDDDDD;
@@ -13,7 +13,7 @@
   --airbnb-gold: #FFB400;
   --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
-  --shadow-button: 0 4px 14px rgba(255, 56, 92, 0.4);
+  --shadow-button: 0 4px 14px rgba(0, 0, 0, 0.4);
   --radius: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
@@ -54,7 +54,7 @@ nav.navbar {
 
 .navbar-brands,
 nav a.nav-link[href="/home"]:first-of-type {
-  color: var(--airbnb-red) !important;
+  color: var(--airbnb-dark) !important;
   font-weight: 800 !important;
   font-size: 1.6rem !important;
   letter-spacing: -0.5px;
@@ -101,7 +101,7 @@ button[type="submit"] {
 button[style*="background-color: #88685e"],
 button[style*="backgroundColor"],
 .btn-primary {
-  background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%) !important;
+  background: linear-gradient(to right, #333 0%, #222 50%, #111 100%) !important;
   color: white !important;
   box-shadow: var(--shadow-button) !important;
 }
@@ -109,7 +109,7 @@ button[style*="backgroundColor"],
 button[style*="background-color: #88685e"]:hover,
 .btn-primary:hover {
   transform: scale(1.02) !important;
-  box-shadow: 0 6px 20px rgba(255, 56, 92, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
 button:disabled {

@@ -17,7 +17,7 @@ const Privacy = () => {
                 borderRadius: '24px',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
             }}>
-                <h1 style={{ fontSize: '36px', fontWeight: '800', marginBottom: '30px', color: '#FF385C' }}>Privacy Policy</h1>
+                <h1 style={{ fontSize: '36px', fontWeight: '800', marginBottom: '30px', color: '#222' }}>Privacy Policy</h1>
                 <p style={{ color: '#717171', marginBottom: '40px' }}>Last Updated: January 11, 2026</p>
 
                 <section style={{ marginBottom: '30px' }}>

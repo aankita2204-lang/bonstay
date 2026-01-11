@@ -105,9 +105,9 @@
 }
 
 .search-btn {
-    background: linear-gradient(to right, #FF385C, #E61E4D);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     width: 52px;
     height: 52px;
@@ -117,11 +117,13 @@
     cursor: pointer;
     font-size: 22px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
 }
 
 .search-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 56, 92, 0.5);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Section Titles */
