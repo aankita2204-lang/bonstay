@@ -69,7 +69,6 @@ const Navigation = () => {
         onClick={toggleMenu}
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
           <span></span>
           <span></span>

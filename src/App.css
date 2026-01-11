@@ -40,16 +40,24 @@ body {
 
 /* ===== Navigation - Airbnb Style ===== */
 nav.navbar {
-  background: var(--airbnb-white) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 16px 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid var(--airbnb-light-gray);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: var(--transition);
+}
+
+.menu-open nav.navbar {
+  background: white !important;
+  backdrop-filter: none;
 }
 
 .navbar-brands,
@@ -88,9 +96,11 @@ nav a.nav-link[href="/home"]:first-of-type {
 .navbar-toggler {
   display: none;
   background: none;
-  border: none;
+  border: none !important;
   padding: 8px;
   cursor: pointer;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .hamburger {
