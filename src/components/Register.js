@@ -1,6 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { mockApi } from "../data/mockData";
+import { validateName, validatePhone, validateEmail, validatePassword } from "../utils/validation";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Register = () => {
     switch (name) {
       case "name":
         // [Tutor Note]: Name must be at least 3 characters.
-        errors.name = value.length >= 3 ? "" : "The length of the name should be minimum 3 character.";
+        errors.name = validateName(value);
         break;
       case "address":
         // [Tutor Note]: Address is a required field.
@@ -40,21 +41,15 @@ const Register = () => {
         break;
       case "phoneNo":
         // [Tutor Note]: Phone number must be exactly 10 digits.
-        errors.phoneNo = value.match(/^\d{10}$/) ? "" : "the Phone number should have 10 digits.";
+        errors.phoneNo = validatePhone(value);
         break;
       case "email":
         // [Tutor Note]: Email must follow a standard pattern.
-        errors.email = value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ? "" : "the Email should match the basic email format.";
+        errors.email = validateEmail(value);
         break;
       case "password":
         // [Tutor Note]: Password must be between 8 and 12 characters.
-        if (!value) {
-          errors.password = "password is a required field.";
-        } else if (value.length < 8 || value.length > 12) {
-          errors.password = "The length of the password should be between 8 and 12 characters";
-        } else {
-          errors.password = "";
-        }
+        errors.password = validatePassword(value);
         break;
       default:
         break;
@@ -92,11 +87,11 @@ const Register = () => {
 
     // 4.  If all the form fields values are entered then make axios call to
     // "http://localhost:4000/users/" and pass the appropriate state as data to the axios call
-    axios.post("http://localhost:4000/users/", state)
-      .then((res) => {
+    mockApi.register(state)
+      .then((data) => {
         // 5. If the axios call is successful, assign the below string to successMessage state:
         //    "User registered successfully with the id "+ <id>
-        setSuccessMessage("User registered successfully with the id " + res.data.id);
+        setSuccessMessage("User registered successfully with the id " + data.id);
         setTimeout(() => navigate("/login"), 2000);
       })
       .catch((err) => {

@@ -42,7 +42,7 @@ const renderBookingCard = (booking) => {
  * This mirrors the filtering logic in Bookings.js component
  */
 const filterBookingsByUser = (bookings, userId) => {
-    return bookings.filter(booking => booking.userId === parseInt(userId));
+    return bookings.filter(booking => String(booking.userId) === String(userId));
 };
 
 /**

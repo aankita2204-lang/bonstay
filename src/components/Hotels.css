@@ -55,6 +55,7 @@
     height: 220px;
     position: relative;
     overflow: hidden;
+    border-radius: 16px 16px 0 0;
 }
 
 .hotel-img {
@@ -62,10 +63,24 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    border-radius: 16px 16px 0 0;
 }
 
 .hotel-card:hover .hotel-img {
     transform: scale(1.08);
+}
+
+/* Image overlay for text readability */
+.hotel-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    pointer-events: none;
+    border-radius: 0 0 0 0;
 }
 
 .hotel-badge {

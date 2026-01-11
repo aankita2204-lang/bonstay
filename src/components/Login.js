@@ -1,6 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { mockApi } from "../data/mockData";
+import { validatePassword } from "../utils/validation";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,13 +29,7 @@ const Login = () => {
         break;
       case "password":
         // [Tutor Note]: Password must be between 8 and 12 characters.
-        if (!value) {
-          errors.password = "Password is required";
-        } else if (value.length < 8 || value.length > 12) {
-          errors.password = "The length of the password should be between 8 and 12 characters";
-        } else {
-          errors.password = "";
-        }
+        errors.password = validatePassword(value);
         break;
       default:
         break;
@@ -67,15 +62,15 @@ const Login = () => {
     // 3.  If all the form fields values are entered then make axios call to
     // "http://localhost:4000/users/" and pass the appropriate state as data to the axios call
     // [Tutor Note]: We use query parameters to find a user with matching email and password.
-    axios.get(`http://localhost:4000/users?email=${state.userid}&password=${state.password}`)
-      .then((res) => {
+    mockApi.login(state.userid, state.password)
+      .then((data) => {
         // [Tutor Note]: If the response contains at least one user, it means login is successful.
-        if (res.data.length > 0) {
+        if (data.length > 0) {
           // 4. If the axios call is successful, assign the below string to successMessage state:
           //    "user logged in successfully."
           setMessage("user logged in successfully.");
-          localStorage.setItem("userId", res.data[0].id);
-          localStorage.setItem("userName", res.data[0].name);
+          localStorage.setItem("userId", data[0].id);
+          localStorage.setItem("userName", data[0].name);
           setTimeout(() => navigate("/home"), 2000);
         } else {
           setMessage("Error while logging in");

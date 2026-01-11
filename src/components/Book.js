@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { mockApi } from "../data/mockData";
+import { validateStartDate, validateEndDate, validatePersons, validateRooms } from "../utils/validation";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
@@ -40,10 +41,10 @@ const Book = () => {
   const [Message, setMessage] = useState("");
 
   useEffect(() => {
-    // Fetch hotel name for display
-    axios.get(`http://localhost:4000/hotels/${hotelId}`)
-      .then(res => {
-        setHotelName(res.data.hotelName);
+    // Using mock API instead of localhost
+    mockApi.getHotelById(hotelId)
+      .then(data => {
+        setHotelName(data.hotelName);
         setHotelImage(hotelImages[(parseInt(hotelId) - 1) % hotelImages.length]);
       })
       .catch(err => console.error(err));
@@ -51,24 +52,22 @@ const Book = () => {
 
   const validate = (name, value) => {
     let errors = { ...formErrors };
-    const today = new Date().toISOString().split('T')[0];
-
     switch (name) {
       case "startDate":
         // [Tutor Note]: Start date must be after today.
-        errors.startDate = value > today ? "" : "the starting date should be after today's date.";
+        errors.startDate = validateStartDate(value);
         break;
       case "endDate":
         // [Tutor Note]: End date must be greater than or equal to start date.
-        errors.endDate = value >= state.startDate ? "" : "the End date should be greater than or equal to start date.";
+        errors.endDate = validateEndDate(value, state.startDate);
         break;
       case "noOfPersons":
         // [Tutor Note]: Persons should be between 1 and 5.
-        errors.noOfPersons = (value > 0 && value <= 5) ? "" : "the The number of persons should be greater than 0 and less than or equal to 5";
+        errors.noOfPersons = validatePersons(value);
         break;
       case "noOfRooms":
         // [Tutor Note]: Rooms should be between 1 and 3.
-        errors.noOfRooms = (value > 0 && value <= 3) ? "" : "the The number of rooms should be greater than 0 and less than or equal to 3";
+        errors.noOfRooms = validateRooms(value);
         break;
       case "typeOfRoom":
         errors.typeOfRoom = value ? "" : "Room type is required";
@@ -119,11 +118,11 @@ const Book = () => {
       userId: parseInt(userId)
     };
 
-    axios.post("http://localhost:4000/bookings/", bookingData)
-      .then((res) => {
+    mockApi.createBooking(bookingData)
+      .then((data) => {
         // 5. If the axios call is successful, assign the below string to successMessage state:
         //   "Booking is successfully created with bookingId: " + <id>
-        setMessage("Booking is successfully created with bookingId: " + res.data.id);
+        setMessage("Booking is successfully created with bookingId: " + data.id);
         setTimeout(() => navigate("/bookings"), 2000);
       })
       .catch((err) => {

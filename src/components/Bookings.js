@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { mockApi } from "../data/mockData";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80",
@@ -18,9 +18,9 @@ const Bookings = () => {
 
   useEffect(() => {
     if (userId) {
-      axios.get(`http://localhost:4000/bookings?userId=${userId}`)
-        .then((res) => {
-          setBookings(res.data);
+      mockApi.getBookingsByUserId(userId)
+        .then((data) => {
+          setBookings(data);
         })
         .catch(() => {
           setErrMessage("Something went Wrong");
@@ -29,7 +29,7 @@ const Bookings = () => {
   }, [userId, deleteSuccess]);
 
   const handleAction = (id) => {
-    axios.delete(`http://localhost:4000/bookings/${id}`)
+    mockApi.deleteBooking(id)
       .then(() => {
         alert("The booking for Booking ID :" + id + " is deleted");
         setDeleteSuccess(id);

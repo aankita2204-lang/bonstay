@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Hotels.css";
+import HotelImage from "./HotelImage";
+import { mockApi } from "../data/mockData";
 
-const hotelImages = [
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-  "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
-  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
-  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
-  "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80",
-  "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80",
-];
+// Utility function to optimize Unsplash URLs
+const getOptimizedImageUrl = (url) => {
+  if (!url) return "";
+  if (url.includes("unsplash.com") && !url.includes("?")) {
+    return `${url}?w=800&q=80`;
+  }
+  return url;
+};
 
 const Hotels = () => {
   const navigate = useNavigate();
@@ -18,9 +19,10 @@ const Hotels = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:4000/hotels")
-      .then((res) => {
-        sethotel(res.data);
+    // Using mock API instead of localhost
+    mockApi.getHotels()
+      .then((data) => {
+        sethotel(data);
       })
       .catch((err) => {
         setError("Something went Wrong");
@@ -37,13 +39,12 @@ const Hotels = () => {
       {error && <div className="alert alert-danger">{error}</div>}
 
       <div className="hotels-grid">
-        {Hotels.map((hotel, index) => (
+        {Hotels.map((hotel) => (
           <div key={hotel.id} className="hotel-card">
             <div className="hotel-image">
-              <img
-                src={hotelImages[index % hotelImages.length]}
+              <HotelImage
+                src={getOptimizedImageUrl(hotel.imageUrl)}
                 alt={hotel.hotelName}
-                className="hotel-img"
               />
               <div className="hotel-badge">
                 <span>⭐ 4.{Math.floor(Math.random() * 3) + 7}</span>

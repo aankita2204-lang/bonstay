@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import { mockApi } from "../data/mockData";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
@@ -15,9 +15,9 @@ const Showreview = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/hotels/${hotelId}`)
-      .then((res) => {
-        setHotel(res.data);
+    mockApi.getHotelById(hotelId)
+      .then((data) => {
+        setHotel(data);
       })
       .catch(() => {
         setError("Something went Wrong");

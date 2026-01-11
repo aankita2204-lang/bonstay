@@ -50,7 +50,7 @@
       "amenities": "Different Cuisine Food, Swimming Pool, Self Cooking Station",
       "phoneNo": 9090909090,
       "address": "120/1C, Bangalore, Karnataka",
-      "imageUrl": "2.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
       "reviews": [
         "Good Accomodation",
         "Best place to relax with friends and family",
@@ -67,7 +67,7 @@
       "amenities": "Homely Food, Sea Food, Children's Park, Boating",
       "phoneNo": 9191919191,
       "address": "90/1A, Kochi, Kerala",
-      "imageUrl": "3.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
       "reviews": [
         "Must visit place. The cuisine available here is so amazing.",
         "My favorite place to relax on my vacations"
@@ -81,7 +81,7 @@
       "amenities": "24 hr Homely Food, Security, Children's Park",
       "phoneNo": 9292929292,
       "address": "100/1A, Chennai, Tamil Nadu",
-      "imageUrl": "4.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
       "reviews": []
     },
     {
@@ -92,7 +92,7 @@
       "amenities": "24 hr Homely Food, Swimming Pool, Security",
       "phoneNo": 9393939393,
       "address": "190/1B, Mumbai, Maharastra",
-      "imageUrl": "5.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
       "reviews": []
     }
   ],

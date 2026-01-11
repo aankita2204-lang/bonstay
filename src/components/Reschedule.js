@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { mockApi } from "../data/mockData";
+import { validateStartDate, validateEndDate } from "../utils/validation";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
@@ -18,24 +19,59 @@ const Reschedule = () => {
     startDate: "",
     endDate: "",
   });
+  //state to hold the individual validation errors of the form fields
+  const [formErrors, setFormErrors] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  // state variable used to disable the button when any of the given form values is invalid
+  const [valid, setValid] = useState(false);
   const [Message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/bookings/${bookingId}`)
-      .then(res => {
-        setBooking(res.data);
+    mockApi.getBookingById(bookingId)
+      .then(data => {
+        setBooking(data);
         setState({
-          startDate: res.data.startDate,
-          endDate: res.data.endDate
+          startDate: data.startDate,
+          endDate: data.endDate
         });
+        // Initial validation of pre-populated data
+        const errors = {
+          startDate: validateStartDate(data.startDate),
+          endDate: validateEndDate(data.endDate, data.startDate)
+        };
+        setFormErrors(errors);
+        setValid(!errors.startDate && !errors.endDate);
       })
       .catch(err => console.error(err));
   }, [bookingId]);
 
+  const validate = (name, value) => {
+    let errors = { ...formErrors };
+
+    switch (name) {
+      case "startDate":
+        errors.startDate = validateStartDate(value);
+        break;
+      case "endDate":
+        errors.endDate = validateEndDate(value, state.startDate);
+        break;
+      default:
+        break;
+    }
+    setFormErrors(errors);
+
+    const isValid = !errors.startDate && !errors.endDate &&
+      (name === "startDate" ? value : state.startDate) &&
+      (name === "endDate" ? value : state.endDate);
+    setValid(isValid);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.patch(`http://localhost:4000/bookings/${bookingId}`, state)
+    mockApi.updateBooking(bookingId, state)
       .then(() => {
         setMessage("Reschedule is successfully done");
         setTimeout(() => navigate("/bookings"), 2000);
@@ -48,6 +84,7 @@ const Reschedule = () => {
   const change = (event) => {
     const { name, value } = event.target;
     setState({ ...state, [name]: value });
+    validate(name, value);
   };
 
   return (
@@ -158,16 +195,17 @@ const Reschedule = () => {
 
             <button
               type="submit"
+              disabled={!valid}
               style={{
                 width: '100%',
                 padding: '16px',
-                background: 'linear-gradient(to right, #FF385C, #E61E4D)',
-                color: 'white',
+                background: valid ? 'linear-gradient(to right, #FF385C, #E61E4D)' : '#ddd',
+                color: valid ? 'white' : '#999',
                 border: 'none',
                 borderRadius: '12px',
                 fontSize: '17px',
                 fontWeight: '700',
-                cursor: 'pointer',
+                cursor: valid ? 'pointer' : 'not-allowed',
                 transition: 'all 0.3s ease'
               }}
             >

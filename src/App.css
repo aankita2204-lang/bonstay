@@ -28,6 +28,14 @@ body {
   font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Subtle background pattern with fallback */
+  background-color: #f8f9fa;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 56, 92, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(103, 126, 234, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 /* ===== Navigation - Airbnb Style ===== */

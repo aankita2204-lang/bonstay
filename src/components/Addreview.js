@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { mockApi } from "../data/mockData";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
@@ -25,8 +25,8 @@ const Addreview = () => {
   const [valid, setValid] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/hotels/${hotelId}`)
-      .then(res => setHotelName(res.data.hotelName))
+    mockApi.getHotelById(hotelId)
+      .then(data => setHotelName(data.hotelName))
       .catch(err => console.error(err));
   }, [hotelId]);
 
@@ -58,11 +58,7 @@ const Addreview = () => {
     }
     setMandatory(false);
 
-    axios.get(`http://localhost:4000/hotels/${hotelId}`)
-      .then(res => {
-        const updatedReviews = [...res.data.reviews, state.Reviews];
-        return axios.patch(`http://localhost:4000/hotels/${hotelId}`, { reviews: updatedReviews });
-      })
+    mockApi.addReview(hotelId, state.Reviews)
       .then(() => {
         setMessage("Review is successfully added.");
         setTimeout(() => navigate("/hotels"), 2000);
