@@ -419,24 +419,24 @@ a:not(.nav-link):not(.navbar-brand):hover {
   }
 
   .navbar-nav {
-    display: none;
+    display: none !important;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     background: white;
     flex-direction: column;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border-top: 1px solid var(--airbnb-light-gray);
-    gap: 8px;
+    gap: 12px;
     z-index: 1001;
     overflow: hidden;
   }
 
   .navbar-nav.show {
-    display: flex;
-    animation: slideDown 0.3s ease-out forwards;
+    display: flex !important;
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes slideDown {
