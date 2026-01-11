@@ -10,7 +10,26 @@ import Book from "./components/Book";
 import Addreview from "./components/Addreview";
 import Showreview from "./components/Showreview";
 import Reschedule from "./components/Reschedule";
+import Contact from "./components/Contact";
+import Privacy from "./components/Privacy";
 import AuthRequired from "./components/AuthRequired";
+
+const Footer = () => {
+  return (
+    <footer style={{
+      background: 'white',
+      padding: '40px 20px',
+      borderTop: '1px solid #eee',
+      textAlign: 'center'
+    }}>
+      <div style={{ marginBottom: '20px' }}>
+        <Link to="/contact" style={{ margin: '0 15px', color: '#717171', textDecoration: 'none', fontWeight: '500' }}>Contact Us</Link>
+        <Link to="/privacy" style={{ margin: '0 15px', color: '#717171', textDecoration: 'none', fontWeight: '500' }}>Privacy Policy</Link>
+      </div>
+      <p style={{ color: '#b0b0b0', fontSize: '14px' }}>© 2026 BonStay. Designed with ❤️ for travelers.</p>
+    </footer>
+  );
+};
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,20 +89,25 @@ const Navigation = () => {
 const App = () => {
   return (
     <HashRouter>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/hotels" element={<Hotels />} />
-          <Route path="/bookings" element={<AuthRequired><Bookings /></AuthRequired>} />
-          <Route path="/book/:hotelId" element={<AuthRequired><Book /></AuthRequired>} />
-          <Route path="/addreview/:hotelId" element={<AuthRequired><Addreview /></AuthRequired>} />
-          <Route path="/showreview/:hotelId" element={<Showreview />} />
-          <Route path="/reschedule/:bookingId" element={<AuthRequired><Reschedule /></AuthRequired>} />
-        </Routes>
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="/bookings" element={<AuthRequired><Bookings /></AuthRequired>} />
+            <Route path="/book/:hotelId" element={<AuthRequired><Book /></AuthRequired>} />
+            <Route path="/addreview/:hotelId" element={<AuthRequired><Addreview /></AuthRequired>} />
+            <Route path="/showreview/:hotelId" element={<Showreview />} />
+            <Route path="/reschedule/:bookingId" element={<AuthRequired><Reschedule /></AuthRequired>} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </HashRouter>
   );

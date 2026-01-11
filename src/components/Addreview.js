@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { mockApi } from "../data/mockData";
+import { validateReview } from "../utils/validation";
 
 const hotelImages = [
   "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
@@ -34,7 +35,7 @@ const Addreview = () => {
     let errors = { ...formErrors };
     switch (name) {
       case "Reviews":
-        errors.Reviews = value ? "" : "Review is required";
+        errors.Reviews = validateReview(value);
         break;
       default:
         break;

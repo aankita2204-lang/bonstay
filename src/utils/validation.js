@@ -92,3 +92,19 @@ export const validateRooms = (rooms) => {
     const num = Number(rooms);
     return (num > 0 && num <= 3) ? "" : "the The number of rooms should be greater than 0 and less than or equal to 3";
 };
+
+/**
+ * Validates that a review is not empty and not more than 100 characters.
+ * @param {string} review - The review text
+ * @returns {string} Error message if invalid, empty string if valid
+ * Validates: Requirements 8.1, 8.2
+ */
+export const validateReview = (review) => {
+    if (!review) {
+        return "Review is required";
+    }
+    if (review.length > 100) {
+        return "Review should not exceed 100 characters";
+    }
+    return "";
+};
