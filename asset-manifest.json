@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bonstay/static/css/main.ebabddac.css",
+    "main.css": "/bonstay/static/css/main.7f1a8179.css",
     "main.js": "/bonstay/static/js/main.a62210fd.js",
     "static/js/453.4c3a044e.chunk.js": "/bonstay/static/js/453.4c3a044e.chunk.js",
     "index.html": "/bonstay/index.html",
-    "main.ebabddac.css.map": "/bonstay/static/css/main.ebabddac.css.map",
+    "main.7f1a8179.css.map": "/bonstay/static/css/main.7f1a8179.css.map",
     "main.a62210fd.js.map": "/bonstay/static/js/main.a62210fd.js.map",
     "453.4c3a044e.chunk.js.map": "/bonstay/static/js/453.4c3a044e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebabddac.css",
+    "static/css/main.7f1a8179.css",
     "static/js/main.a62210fd.js"
   ]
 }
